@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "raspi-home-ionic",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,7 @@
+{
+  "name": "raspi-home-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
