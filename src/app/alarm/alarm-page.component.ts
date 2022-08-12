@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AlarmPage {
 
+  title = 'Alarm';
+
   constructor() {}
 
 }

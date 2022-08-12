@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   hostMqtt: 'mqtt://localhost',
   portMqtt: 1883,
+  publishTimeout: 3,
   statusTopic: 'mqtt/status',
   commandTopic: 'mqtt/command',
 };
