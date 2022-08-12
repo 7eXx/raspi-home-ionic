@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MqttService} from '../services/mqtt.service';
 
 @Component({
   selector: 'app-info',
@@ -9,6 +10,6 @@ export class InfoPage {
 
   title = 'Info';
 
-  constructor() {}
+  constructor(private mqttService: MqttService) {}
 
 }

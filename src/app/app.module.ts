@@ -15,11 +15,6 @@ import {MqttService} from './services/mqtt.service';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
-    MqttService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: startupMqttService
-    },
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy,
