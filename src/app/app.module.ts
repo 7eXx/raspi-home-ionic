@@ -7,9 +7,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { APP_INITIALIZER} from '@angular/core';
-import {MqttService} from './services/mqtt.service';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
