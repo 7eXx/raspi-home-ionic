@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Automation } from '../datastructures/automation.datastructure';
 import { HomeBrokerService } from '../services/home-broker.service';
 
 @Component({
@@ -6,10 +8,19 @@ import { HomeBrokerService } from '../services/home-broker.service';
   templateUrl: 'info-page.component.html',
   styleUrls: ['info-page.component.scss']
 })
-export class InfoPage {
+export class InfoPage implements OnInit {
 
   title = 'Info';
+  systemStatus: Observable<Automation>;
 
   constructor(private homeBrokerService: HomeBrokerService) {}
+
+  public ngOnInit(): void {
+    this.retrieveSystemStatus();
+  }
+
+  private retrieveSystemStatus(): void {
+    this.systemStatus = this.homeBrokerService.getSystemStatusAsObservable();
+  }
 
 }

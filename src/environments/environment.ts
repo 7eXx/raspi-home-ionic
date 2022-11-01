@@ -11,8 +11,8 @@ export const environment = {
     clientId: 'ionic-client',
     timeout: 3000,
     path: '/mqtt',
-    statusTopic: '/status',
-    commandTopic: '/command',
+    statusTopic: 'mqtt/status',
+    commandTopic: 'mqtt/command',
   }
 };
 
