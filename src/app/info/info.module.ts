@@ -12,7 +12,6 @@ import { InfoPageRoutingModule } from './info-routing.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: InfoPage }]),
     InfoPageRoutingModule,
   ],
   declarations: [InfoPage]
