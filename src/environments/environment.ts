@@ -4,11 +4,16 @@
 
 export const environment = {
   production: false,
-  hostMqtt: 'mqtt://localhost',
-  portMqtt: 1883,
-  publishTimeout: 3,
-  statusTopic: 'mqtt/status',
-  commandTopic: 'mqtt/command',
+  mqtt: {
+    protocol: 'ws',
+    server: '127.0.0.1',
+    port: 9001,
+    clientId: 'ionic-client',
+    timeout: 3000,
+    path: '/mqtt',
+    statusTopic: '/status',
+    commandTopic: '/command',
+  }
 };
 
 /*

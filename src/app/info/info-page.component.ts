@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomeBrokerService } from '../services/home-broker.service';
 
 @Component({
   selector: 'app-info',
@@ -9,6 +10,6 @@ export class InfoPage {
 
   title = 'Info';
 
-  constructor() {}
+  constructor(private homeBrokerService: HomeBrokerService) {}
 
 }
