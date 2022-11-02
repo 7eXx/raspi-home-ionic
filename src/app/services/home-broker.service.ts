@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { IMqttServiceOptions, MqttService, IMqttMessage } from 'ngx-mqtt';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {environment} from '../../environments/environment';
+import { AutomationBuilder } from '../datastructures/automation-builder';
 import {Automation} from '../datastructures/automation.datastructure';
 
 
@@ -50,14 +51,10 @@ export class HomeBrokerService {
     this.destroyService();
   }
 
-  private onMessageArrived(packet: any): void {
-    const { topic, payload } = packet;
-    console.log(`Received message ${payload.toString()} from topic ${topic}`);
-  }
-
   private handleStatus(message: IMqttMessage): void {
     const { topic, payload } = message;
-    this.systemStatus.next(JSON.parse(payload.toString()) as Automation);
+    const automation = new AutomationBuilder(JSON.parse(payload.toString())).build();
+    this.systemStatus.next(automation);
     console.log(`Received message ${payload.toString()} from topic ${topic}`);
   }
 
