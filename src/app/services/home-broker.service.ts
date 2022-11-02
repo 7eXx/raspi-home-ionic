@@ -53,7 +53,7 @@ export class HomeBrokerService {
 
   private handleStatus(message: IMqttMessage): void {
     const { topic, payload } = message;
-    const automation = new AutomationBuilder(payload).build();
+    const automation = new AutomationBuilder(JSON.parse(payload.toString())).build();
     this.systemStatus.next(automation);
     console.log(`Received message ${payload.toString()} from topic ${topic}`);
   }
