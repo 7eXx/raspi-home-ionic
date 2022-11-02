@@ -11,11 +11,15 @@ import {Automation} from '../datastructures/automation.datastructure';
 })
 export class HomeBrokerService {
   private subscription: Subscription;
-  private isConnection = false;
+  private isConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private systemStatus: BehaviorSubject<Automation> = new BehaviorSubject<Automation>(null);
 
   constructor(private mqttService: MqttService) {
     this.createConnection();
+  }
+
+  public isConnectedAsObservable(): Observable<boolean> {
+    return this.isConnected.asObservable();
   }
 
   public getSystemStatusAsObservable(): Observable<Automation> {
@@ -37,7 +41,7 @@ export class HomeBrokerService {
   }
 
   private onConnect(): void {
-    this.isConnection = true;
+    this.isConnected.next(true);
     console.log('Connection succeeded!');
   }
 
@@ -71,8 +75,8 @@ export class HomeBrokerService {
 
   private destroyConnection(): void {
     try {
+      this.isConnected.next(false);
       this.mqttService.disconnect();
-      this.isConnection = false;
       console.log('Successfully disconnected!');
     } catch (err) {
         console.error('Disconnect failed', err);

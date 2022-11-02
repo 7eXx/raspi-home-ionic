@@ -11,6 +11,7 @@ import { HomeBrokerService } from '../services/home-broker.service';
 export class InfoPage implements OnInit {
 
   title = 'Info';
+  isConnected: Observable<boolean>;
   systemStatus: Observable<Automation>;
 
   constructor(private homeBrokerService: HomeBrokerService) {}
@@ -20,6 +21,7 @@ export class InfoPage implements OnInit {
   }
 
   private retrieveSystemStatus(): void {
+    this.isConnected = this.homeBrokerService.isConnectedAsObservable();
     this.systemStatus = this.homeBrokerService.getSystemStatusAsObservable();
   }
 
