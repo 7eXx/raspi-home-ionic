@@ -50,11 +50,6 @@ export class HomeBrokerService {
     this.destroyService();
   }
 
-  private onMessageArrived(packet: any): void {
-    const { topic, payload } = packet;
-    console.log(`Received message ${payload.toString()} from topic ${topic}`);
-  }
-
   private handleStatus(message: IMqttMessage): void {
     const { topic, payload } = message;
     this.systemStatus.next(JSON.parse(payload.toString()) as Automation);

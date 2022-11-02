@@ -17,6 +17,8 @@ export interface MemoryInfo {
 
 export interface CpuInfo {
     percentage: number;
+    minTemp: number;
+    maxTemp: number;
     temperature: number;
     unit: string;
 }
