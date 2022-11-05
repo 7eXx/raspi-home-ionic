@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DiskInfo } from '../datastructures/system-information.datastructure';
+import { DiskInfo } from '../../datastructures/system-information.datastructure';
 
 @Component({
   selector: 'app-disk',

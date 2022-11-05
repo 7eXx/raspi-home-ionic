@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MemoryInfo } from '../datastructures/system-information.datastructure';
+import { MemoryInfo } from '../../datastructures/system-information.datastructure';
 
 @Component({
   selector: 'app-memory',

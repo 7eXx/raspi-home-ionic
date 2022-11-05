@@ -7,10 +7,10 @@ import { NgxGaugeModule } from 'ngx-gauge';
 
 import { InfoPageRoutingModule } from './info-routing.module';
 import { HomeBrokerService } from '../services/home-broker.service';
-import { CpuComponent } from '../cpu/cpu.component';
+import { CpuComponent } from '../components/cpu/cpu.component';
 import { MemoryInfo } from '../datastructures/system-information.datastructure';
-import { MemoryComponent } from '../memory/memory.component';
-import { DiskComponent } from '../disk/disk.component';
+import { MemoryComponent } from '../components/memory/memory.component';
+import { DiskComponent } from '../components/disk/disk.component';
 
 @NgModule({
   imports: [
