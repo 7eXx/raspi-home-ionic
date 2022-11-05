@@ -8,6 +8,8 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { InfoPageRoutingModule } from './info-routing.module';
 import { HomeBrokerService } from '../services/home-broker.service';
 import { CpuComponent } from '../cpu/cpu.component';
+import { MemoryInfo } from '../datastructures/system-information.datastructure';
+import { MemoryComponent } from '../memory/memory.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { CpuComponent } from '../cpu/cpu.component';
   declarations: [
     InfoPage,
     CpuComponent,
+    MemoryComponent,
   ],
   providers: [
     HomeBrokerService

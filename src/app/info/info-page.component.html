@@ -38,16 +38,7 @@
           </ion-label>
         </ion-item>
         <app-cpu [cpu]="status.getSystemInformation().cpu"></app-cpu>
-        <ion-item>
-          <ion-label>
-            <h1>Memory</h1>
-            <p>Percentage: {{ status.getSystemInformation().memory.percentage }}</p>
-            <p>Total: {{ status.getSystemInformation().memory.total }} {{ status.getSystemInformation().memory.unit }}</p>
-            <p>Available: {{ status.getSystemInformation().memory.available }} {{ status.getSystemInformation().memory.unit }}</p>
-            <p>Used: {{ status.getSystemInformation().memory.used }} {{ status.getSystemInformation().memory.unit }}</p>
-            <p>Free: {{ status.getSystemInformation().memory.free }} {{ status.getSystemInformation().memory.unit }}</p>
-          </ion-label>
-        </ion-item>
+        <app-memory [memory]="status.getSystemInformation().memory"></app-memory>
         <ion-item>
           <ion-label>
             <h1>Disk</h1>
