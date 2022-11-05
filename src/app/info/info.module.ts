@@ -10,6 +10,7 @@ import { HomeBrokerService } from '../services/home-broker.service';
 import { CpuComponent } from '../cpu/cpu.component';
 import { MemoryInfo } from '../datastructures/system-information.datastructure';
 import { MemoryComponent } from '../memory/memory.component';
+import { DiskComponent } from '../disk/disk.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MemoryComponent } from '../memory/memory.component';
     InfoPage,
     CpuComponent,
     MemoryComponent,
+    DiskComponent
   ],
   providers: [
     HomeBrokerService

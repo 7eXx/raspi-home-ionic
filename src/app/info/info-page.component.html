@@ -39,15 +39,7 @@
         </ion-item>
         <app-cpu [cpu]="status.getSystemInformation().cpu"></app-cpu>
         <app-memory [memory]="status.getSystemInformation().memory"></app-memory>
-        <ion-item>
-          <ion-label>
-            <h1>Disk</h1>
-            <p>Percentage: {{ status.getSystemInformation().disk.percentage }}</p>
-            <p>Total: {{ status.getSystemInformation().disk.total }} {{ status.getSystemInformation().disk.unit }}</p>
-            <p>Used: {{ status.getSystemInformation().disk.used }} {{ status.getSystemInformation().disk.unit }}</p>
-            <p>Free: {{ status.getSystemInformation().disk.free }} {{ status.getSystemInformation().disk.unit }}</p>
-          </ion-label>
-        </ion-item>
+        <app-disk [disk]="status.getSystemInformation().disk"></app-disk>
       </ion-card-content>
     </ion-card>
   </ng-container>
