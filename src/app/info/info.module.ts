@@ -7,6 +7,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
 
 import { InfoPageRoutingModule } from './info-routing.module';
 import { HomeBrokerService } from '../services/home-broker.service';
+import { CpuComponent } from '../cpu/cpu.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,10 @@ import { HomeBrokerService } from '../services/home-broker.service';
     NgxGaugeModule,
     InfoPageRoutingModule,
   ],
-  declarations: [InfoPage],
+  declarations: [
+    InfoPage,
+    CpuComponent,
+  ],
   providers: [
     HomeBrokerService
   ]
