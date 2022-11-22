@@ -3,7 +3,7 @@
     <ion-row>
       <ion-col>
         <ion-label>
-          <h1>Cpu info</h1>
+          <h1>Cpu</h1>
         </ion-label>
       </ion-col>
     </ion-row>
@@ -12,14 +12,14 @@
         <ngx-gauge
           [thick]="15" [cap]="'round'"
           [type]="'arch'" [value]="cpu.percentage"
-          [label]="'Cpu load'" [append]="'%'"></ngx-gauge>
+          [label]="'Load'" [append]="'%'"></ngx-gauge>
       </ion-col>
       <ion-col>
         <ngx-gauge
           [thick]="15" [cap]="'round'"
           [type]="'arch'" [value]="cpu.temperature"
           [min]="cpu.minTemp" [max]="cpu.maxTemp"
-          [label]="'Cpu temp.'" [append]="cpu.unit"></ngx-gauge>
+          [label]="'Temp.'" [append]="cpu.unit"></ngx-gauge>
       </ion-col>
     </ion-row>
   </ion-grid>
