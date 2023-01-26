@@ -29,9 +29,7 @@
         <ion-item>
           <ion-label>
             <h1>Home status</h1>
-            <p>Alarm: {{ status.getAlarm() }}</p>
-            <p>Ecu: {{ status.getEcu() }}</p>
-            <p>Gate: {{ status.getGate() }}</p>
+            <p>Alarm: {{ status.getAlarm() }} - Ecu: {{ status.getEcu() }} - Gate: {{ status.getGate() }}</p>
           </ion-label>
         </ion-item>
         <app-cpu [cpu]="status.getSystemInformation().cpu"></app-cpu>
