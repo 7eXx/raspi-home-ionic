@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
-import { IMqttServiceOptions, MqttService, IMqttMessage } from 'ngx-mqtt';
+import { MqttService, IMqttMessage } from 'ngx-mqtt';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {environment} from '../../environments/environment';
 import { AutomationBuilder } from '../datastructures/automation-builder';
 import {Automation} from '../datastructures/automation.datastructure';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +53,6 @@ export class HomeBrokerService {
     const { topic, payload } = message;
     const automation = new AutomationBuilder(JSON.parse(payload.toString())).build();
     this.systemStatus.next(automation);
-    console.log(`Received message ${payload.toString()} from topic ${topic}`);
   }
 
 

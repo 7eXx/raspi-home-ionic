@@ -8,10 +8,10 @@ import { MqttModule} from 'ngx-mqtt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { mqttOptions } from './services/mqtt-options';
+import {HomeBrokerService} from './services/home-broker.service';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -22,7 +22,8 @@ import { mqttOptions } from './services/mqtt-options';
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy,
-    }
+    },
+    HomeBrokerService,
   ],
   bootstrap: [AppComponent],
 })
