@@ -25,9 +25,6 @@ import { DiskComponent } from '../components/disk/disk.component';
     CpuComponent,
     MemoryComponent,
     DiskComponent
-  ],
-  providers: [
-    HomeBrokerService
   ]
 })
 export class InfoPageModule {}
