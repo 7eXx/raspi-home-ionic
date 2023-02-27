@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SettingsPage} from '../settings/settings.page';
 
 @Component({
   selector: 'app-alarm',
@@ -6,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['alarm-page.component.scss']
 })
 export class AlarmPage {
-
   title = 'Alarm';
 
   constructor() {}
