@@ -14,4 +14,7 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
+  onClickBack() {
+    console.log('on click back');
+  }
 }

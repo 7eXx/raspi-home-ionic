@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button default-href="#"></ion-back-button>
+      <ion-back-button default-href="#" (click)="onClickBack()"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
@@ -13,5 +13,24 @@
       <ion-title size="large">{{ title }}</ion-title>
     </ion-toolbar>
   </ion-header>
-  This is the alarm status and control
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">
+        <h1>Server ip</h1>
+      </ion-label>
+      <ion-input placeholder="192.168.0.100"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">
+        <h1>Server port</h1>
+      </ion-label>
+      <ion-input placeholder="8080"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">
+        <h1>Server ip</h1>
+      </ion-label>
+      <ion-input placeholder="Connection timeout"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>
