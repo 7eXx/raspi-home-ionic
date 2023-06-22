@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   mqtt: {
     protocol: 'ws',
-    server: '127.0.0.1',
+    server: '192.168.0.95',
     port: 9001,
     clientId: 'ionic-client',
     timeout: 3000,
