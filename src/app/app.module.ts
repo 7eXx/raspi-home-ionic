@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { mqttOptions } from './services/mqtt-options';
 import {HomeBrokerService} from './services/home-broker.service';
+import {CommandRequestService} from './services/command-request.service';
+import {CommonModule} from '@angular/common';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +19,8 @@ import {HomeBrokerService} from './services/home-broker.service';
     BrowserModule,
     IonicModule.forRoot(),
     MqttModule.forRoot(mqttOptions),
+    HttpClientModule,
+    CommonModule,
     AppRoutingModule
   ],
   providers: [
@@ -24,6 +29,7 @@ import {HomeBrokerService} from './services/home-broker.service';
       useClass: IonicRouteStrategy,
     },
     HomeBrokerService,
+    CommandRequestService
   ],
   bootstrap: [AppComponent],
 })

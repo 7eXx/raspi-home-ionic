@@ -5,7 +5,7 @@
         <ion-icon slot="icon-only" name="warning-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>Alarm</ion-title>
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/settings']">
         <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
@@ -17,8 +17,22 @@
 <ion-content class="ion-padding" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ title }}</ion-title>
+      <ion-title size="large">Alarm</ion-title>
     </ion-toolbar>
   </ion-header>
-  This is the alarm status and control
+  <ng-container *ngIf="ecuAlarm | async; else ecuOff">
+    Ecu is enabled
+  </ng-container>
+  <ng-template #ecuOff>
+    Ecu disabled
+  </ng-template>
+  <div>
+    <ion-button (click)="setAlarmEcu(1)">Set 1</ion-button>
+  </div>
+  <div>
+    <ion-button (click)="setAlarmEcu(0)">Set 0</ion-button>
+  </div>
+  <div>
+    <ion-button (click)="toggleAlarmEcu()">Toggle</ion-button>
+  </div>
 </ion-content>

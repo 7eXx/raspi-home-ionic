@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {environment} from '../../environments/environment';
 import { AutomationBuilder } from '../datastructures/automation-builder';
 import {Automation} from '../datastructures/automation.datastructure';
+import {filter, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class HomeBrokerService {
   public getSystemStatusAsObservable(): Observable<Automation> {
     return this.systemStatus.asObservable();
   }
+
+  public getEcuAlarmAsObservable(): Observable<boolean> {
+    return this.getSystemStatusAsObservable().pipe(
+      filter((status) => !!status),
+      map((status: Automation) => status.getEcu()));
+  }
+
 
   private createConnection(): void {
     try {

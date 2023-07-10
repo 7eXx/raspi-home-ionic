@@ -15,12 +15,8 @@
       ],
       "rules": {
         "prefer-arrow-callback": "off",
-        "@angular-eslint/component-class-suffix": [
-          "error",
-          {
-            "suffixes": ["Page", "Component"]
-          }
-        ],
+        "object-shorthand": "off",
+        "@typescript-eslint/naming-convention": "off",
         "@angular-eslint/component-selector": [
           "error",
           {
