@@ -9,5 +9,9 @@ export const environment = {
     path: '/mqtt',
     statusTopic: 'mqtt/status',
     commandTopic: 'mqtt/command',
+  },
+  flask: {
+    server: '127.0.0.1',
+    port: 5000,
   }
 };

@@ -32,6 +32,12 @@
             "prefix": "app",
             "style": "camelCase"
           }
+        ],
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Page", "Component", "Dialog"]
+          }
         ]
       }
     },
