@@ -20,19 +20,28 @@
       <ion-title size="large">Alarm</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ng-container *ngIf="ecuAlarm | async; else ecuOff">
-    Ecu is enabled
-  </ng-container>
-  <ng-template #ecuOff>
-    Ecu disabled
-  </ng-template>
-  <div>
-    <ion-button (click)="setAlarmEcu(1)">Set 1</ion-button>
-  </div>
-  <div>
-    <ion-button (click)="setAlarmEcu(0)">Set 0</ion-button>
-  </div>
-  <div>
-    <ion-button (click)="toggleAlarmEcu()">Toggle</ion-button>
-  </div>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-align-self-center">
+        <ng-container *ngIf="ecuAlarm | async; else ecuOff">
+          <ion-text color="danger">
+            <h1>Armed</h1>
+          </ion-text>
+        </ng-container>
+        <ng-template #ecuOff>
+          <ion-text color="success">
+            <h1>Disabled</h1>
+          </ion-text>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+    <ion-row class="">
+      <ion-col class="">
+        <ion-button (click)="setAlarmEcu(1)">Set 1</ion-button>
+        <ion-button (click)="setAlarmEcu(0)">Set 0</ion-button>
+        <ion-button (click)="toggleAlarmEcu()">Toggle</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
