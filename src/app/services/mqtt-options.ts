@@ -6,7 +6,6 @@ export const mqttOptions: IMqttServiceOptions = {
   hostname: environment.mqtt.server,
   port: environment.mqtt.port,
   protocol: environment.mqtt.protocol === 'wss'? 'wss': 'ws',
-  clientId: environment.mqtt.clientId,
   connectTimeout: environment.mqtt.timeout,
   path: environment.mqtt.path,
 };

@@ -15,7 +15,7 @@ export const environment = {
     commandTopic: 'mqtt/command',
   },
   flask: {
-    server: '127.0.0.1',
+    server: '192.168.0.12',
     port: 5000,
   }
 };

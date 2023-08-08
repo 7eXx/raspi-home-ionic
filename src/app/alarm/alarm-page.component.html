@@ -21,25 +21,22 @@
     </ion-toolbar>
   </ion-header>
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center">
-        <ng-container *ngIf="ecuAlarm | async; else ecuOff">
-          <ion-text color="danger">
-            <h1>Armed</h1>
-          </ion-text>
+    <ion-row>
+      <ion-col class="label-container">
+        <ng-container *ngIf="ecuAlarm | async; else ecuOff">X
+          <ion-label class="banner-label on">ON</ion-label>
         </ng-container>
         <ng-template #ecuOff>
-          <ion-text color="success">
-            <h1>Disabled</h1>
-          </ion-text>
+          <ion-label class="banner-label off">OFF</ion-label>
         </ng-template>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col class="ion-text-center">
-        <ion-button (click)="setAlarmEcu(1)">Set 1</ion-button>
-        <ion-button (click)="setAlarmEcu(0)">Set 0</ion-button>
-        <ion-button (click)="toggleAlarmEcu()">Toggle</ion-button>
+    <ion-row>
+      <ion-col class="icon-button-container">
+        <ion-button class="icon-button" [ngClass]="[ (ecuAlarm | async) ? 'on' : 'off']"
+                    (click)="toggleAlarmEcu()">
+          <ion-icon name="power"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
