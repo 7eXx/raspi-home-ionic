@@ -6,13 +6,14 @@
 }
 
 .banner-label {
-  font-size: 3rem;
+  font-size: 5rem;
   background-color: #000;
   color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .banner-label.on {
@@ -24,7 +25,7 @@
 }
 
 .success-label {
-  font-size: 3rem;
+  font-size: 5rem;
   background-color: #00bb0a;
   color: #fff;
   padding: 20px;
@@ -42,12 +43,17 @@
 
 .icon-button {
   --background: linear-gradient(45deg, #3d3d3d, #1e1e1e);
-  --border-radius: 50%;
+  --border-radius: 20px;
   --box-shadow: 0 4px 6px rgba(19, 19, 19, 0.1);
+  --padding-bottom: 30px;
+  --padding-top: 30px;
+  --padding-end: 30px;
+  --padding-start: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: white;
-  width: 70vw;
-  height: 30vh;
-  font-size: 3rem;
+  width: 250px;
+  height: 200px;
+  font-size: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,12 +61,12 @@
 }
 
 .icon-button.on {
-  --background: linear-gradient(45deg, #ff5e3a, #ff3838);
+  --background: radial-gradient(#fd7251, #c20000);
   --box-shadow: 0 4px 6px rgba(255, 56, 88, 0.1);
 }
 
 .icon-button.off {
-  --background: linear-gradient(45deg, #00bb0a, #6aff38);
+  --background: radial-gradient(#63ff2f, #00ad0a);
   --box-shadow: 0 4px 6px rgba(112, 255, 56, 0.1);
 }
 
