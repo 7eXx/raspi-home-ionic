@@ -1,44 +1,24 @@
-.label-container {
+.centered-banner {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 20vh;
+  align-content: center;
+  padding: 10px;
+  color: white;
 }
 
-.banner-label {
-  font-size: 5rem;
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
+.centered-banner.connect {
+  background-color: #00ad0a;
 }
 
-.banner-label.on {
-  background: linear-gradient(45deg, #ff5e3a, #ff3838);
-}
-
-.banner-label.off {
-  background: linear-gradient(45deg, #00bb0a, #6aff38);
-}
-
-.success-label {
-  font-size: 5rem;
-  background-color: #00bb0a;
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+.centered-banner.disconnect {
+  background-color: #949494;
 }
 
 .icon-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 70vh;
 }
 
 .icon-button {

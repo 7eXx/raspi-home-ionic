@@ -7,41 +7,34 @@
     </ion-buttons>
     <ion-title>Alarm</ion-title>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/settings']">
-        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      <ion-button (click)="onReconnect()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="ion-padding" [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Alarm</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-grid>
-    <ion-row>
-
-    </ion-row>
-    <ion-row>
-      <ion-col class="label-container">
-          <ion-text class="banner-label"
-                     [ngClass]="(ecuAlarm | async) ? 'on' : 'off'"
-                     (click)="toggleAlarm()">
-            {{ (ecuAlarm | async) ? "ON" : "OFF" }}
-          </ion-text>
-        <ng-template #ecuOff>
-          <ion-label class="banner-label off">OFF</ion-label>
-        </ng-template>
-      </ion-col>
-    </ion-row>
+  <div class="centered-banner" [ngClass]="(statusConnected | async) ? 'connect' : 'disconnect'">
+    <span class="ion-padding-end">{{ (statusConnected | async) ? 'Connected' : 'Disconnect'}}</span>
+    <ion-icon name="{{ (statusConnected | async) ? 'wifi' : 'cloud-offline' }}" ></ion-icon>
+  </div>
+  <ion-grid class="ion-padding">
     <ion-row>
       <ion-col class="icon-button-container">
-        <ion-button class="icon-button" [ngClass]="[ (ecuAlarm | async) ? 'on' : 'off']"
-                    (click)="toggleAlarmEcu()">
-          {{ (ecuAlarm | async) ? "ON" : "OFF" }}
-        </ion-button>
+        <ng-container *ngIf="statusConnected | async; else off">
+          <ion-button class="icon-button" [ngClass]="[ (ecuAlarm | async) ? 'on' : 'off' ]"
+                      (click)="toggleAlarmEcu()">
+            {{ (ecuAlarm | async) ? "ON" : "OFF" }}
+          </ion-button>
+        </ng-container>
+        <ng-template #off>
+          <ion-button class="icon-button">N/A</ion-button>
+        </ng-template>
       </ion-col>
     </ion-row>
   </ion-grid>

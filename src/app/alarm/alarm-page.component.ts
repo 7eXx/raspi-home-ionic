@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HomeBrokerService} from '../services/home-broker.service';
 import {Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
-import {bufferToggle} from "rxjs/operators";
 
 @Component({
   selector: 'app-alarm',
@@ -13,16 +12,20 @@ export class AlarmPage implements OnInit {
 
   isAlarmActive = false;
 
-  public ecuAlarm: Observable<boolean>;
+  statusConnected: Observable<boolean>;
+  ecuAlarm: Observable<boolean>;
 
   constructor(
     private homeBrokerService: HomeBrokerService,
     private commandRequestService: CommandRequestService) {}
 
   ngOnInit() {
+    this.statusConnected = this.homeBrokerService.isConnectedAsObservable();
     this.ecuAlarm = this.homeBrokerService.getEcuAlarmAsObservable();
+  }
 
-    this.ecuAlarm.subscribe((value) => console.log(value));
+  onReconnect() {
+    this.homeBrokerService.reconnect();
   }
 
   setAlarmEcu(state: number) {
@@ -36,6 +39,4 @@ export class AlarmPage implements OnInit {
   toggleAlarm() {
     this.isAlarmActive = !this.isAlarmActive;
   }
-
-  protected readonly bufferToggle = bufferToggle;
 }

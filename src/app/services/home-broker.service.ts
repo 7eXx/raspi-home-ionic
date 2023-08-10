@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { MqttService, IMqttMessage } from 'ngx-mqtt';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import {BehaviorSubject, Observable, Subject, Subscription} from 'rxjs';
 import {environment} from '../../environments/environment';
 import { AutomationBuilder } from '../datastructures/automation-builder';
 import {Automation} from '../datastructures/automation.datastructure';
@@ -10,7 +10,11 @@ import {filter, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HomeBrokerService {
-  private subscription: Subscription;
+  private messageSub: Subscription;
+  private connectSub: Subscription;
+  private errorSub: Subscription;
+  private offlineSub: Subscription;
+
   private isConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private systemStatus: BehaviorSubject<Automation> = new BehaviorSubject<Automation>(null);
 
@@ -32,18 +36,20 @@ export class HomeBrokerService {
       map((status: Automation) => status.getEcu()));
   }
 
+  public reconnect() {
+    this.unsubscribeAll();
+    this.disconnect();
+    this.createConnection();
+  }
 
   private createConnection(): void {
-    try {
-      this.mqttService.connect();
-    } catch (error) {
-      console.error('mqtt.connect error: ', error);
-    }
+    this.mqttService.connect();
 
-    this.mqttService.onConnect.subscribe(() => this.onConnect());
-    this.mqttService.onError.subscribe((error: any) => this.onError(error));
+    this.connectSub = this.mqttService.onConnect.subscribe(() => this.onConnect());
+    this.errorSub = this.mqttService.onError.subscribe((error: any) => this.onError(error));
+    this.offlineSub = this.mqttService.onOffline.subscribe(() => this.onOffline());
 
-    this.subscription = this.mqttService.observe(environment.mqtt.statusTopic).subscribe(
+    this.messageSub = this.mqttService.observe(environment.mqtt.statusTopic).subscribe(
       (message: IMqttMessage) => this.handleStatus(message));
   }
 
@@ -57,31 +63,56 @@ export class HomeBrokerService {
     this.destroyService();
   }
 
+  private onOffline() {
+    console.log('Mqtt Offline');
+    this.destroyService();
+  }
+
   private handleStatus(message: IMqttMessage): void {
     const { topic, payload } = message;
     const automation = new AutomationBuilder(JSON.parse(payload.toString())).build();
     this.systemStatus.next(automation);
   }
 
-
   private destroyService(): void {
-    this.destroySubscription();
-    this.destroyConnection();
+    this.unsubscribeMessage();
+    this.disconnect();
   }
 
-  private destroySubscription(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+  private unsubscribeAll() {
+    this.unsubscribeMessage();
+    this.unsubscribeConnect();
+    this.unsubscribeError();
+    this.unsubscribeOffline();
+  }
+
+  private unsubscribeMessage(): void {
+    if (this.messageSub) {
+      this.messageSub.unsubscribe();
     }
   }
 
-  private destroyConnection(): void {
-    try {
-      this.isConnected.next(false);
-      this.mqttService.disconnect();
-      console.log('Successfully disconnected!');
-    } catch (err) {
-        console.error('Disconnect failed', err);
+  private unsubscribeConnect() {
+    if (this.connectSub) {
+      this.connectSub.unsubscribe();
     }
+  }
+
+  private unsubscribeError() {
+    if (this.errorSub) {
+      this.errorSub.unsubscribe();
+    }
+  }
+
+  private unsubscribeOffline() {
+    if (this.offlineSub) {
+      this.offlineSub.unsubscribe();
+    }
+  }
+
+  private disconnect(): void {
+    this.isConnected.next(false);
+    this.mqttService.disconnect();
+    console.log('Successfully disconnected!');
   }
 }
