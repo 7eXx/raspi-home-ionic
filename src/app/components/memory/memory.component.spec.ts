@@ -15,6 +15,14 @@ describe('MemoryComponent', () => {
 
     fixture = TestBed.createComponent(MemoryComponent);
     component = fixture.componentInstance;
+    component.memory = {
+      total: 16000,
+      available: 8000,
+      percentage:  50,
+      used: 8000,
+      free: 4000,
+      unit: 'MB'
+    };
     fixture.detectChanges();
   }));
 

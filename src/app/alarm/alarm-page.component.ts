@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {HomeBrokerService} from '../services/home-broker.service';
 import {Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
+import {HomeBrokerService} from '../services/home-broker.service';
 
 @Component({
   selector: 'app-alarm',

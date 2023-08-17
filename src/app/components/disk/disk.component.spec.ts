@@ -14,7 +14,15 @@ describe('DiskComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(DiskComponent);
+
     component = fixture.componentInstance;
+    component.disk = {
+      total: 500,
+      used:  250,
+      free: 250,
+      percentage: 50,
+      unit: 'GB'
+    };
     fixture.detectChanges();
   }));
 
