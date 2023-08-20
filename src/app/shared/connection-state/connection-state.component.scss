@@ -1,0 +1,15 @@
+.centered-banner {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  color: white;
+}
+
+.centered-banner.connect {
+  background-color: #00ad0a;
+}
+
+.centered-banner.disconnect {
+  background-color: #949494;
+}

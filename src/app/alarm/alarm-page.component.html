@@ -19,10 +19,7 @@
       <ion-title size="large">Alarm</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div class="centered-banner" [ngClass]="(statusConnected | async) ? 'connect' : 'disconnect'">
-    <span class="ion-padding-end">{{ (statusConnected | async) ? 'Connected' : 'Disconnect'}}</span>
-    <ion-icon name="{{ (statusConnected | async) ? 'wifi' : 'cloud-offline' }}" ></ion-icon>
-  </div>
+  <app-connection-state></app-connection-state>
   <ion-grid class="ion-padding">
     <ion-row>
       <ion-col class="icon-button-container">

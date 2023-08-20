@@ -1,0 +1,4 @@
+<div class="centered-banner" [ngClass]="(statusConnected | async) ? 'connect' : 'disconnect'">
+  <span class="ion-padding-end">{{ (statusConnected | async) ? 'Connected' : 'Disconnect'}}</span>
+  <ion-icon name="{{ (statusConnected | async) ? 'wifi' : 'cloud-offline' }}" ></ion-icon>
+</div>
