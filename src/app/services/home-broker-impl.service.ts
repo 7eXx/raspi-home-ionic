@@ -22,21 +22,32 @@ export class HomeBrokerServiceImpl extends HomeBrokerService {
     this.createConnection();
   }
 
-  public isConnectedAsObservable(): Observable<boolean> {
+  public override isConnectedAsObservable(): Observable<boolean> {
     return this.isConnected.asObservable();
   }
 
-  public getSystemStatusAsObservable(): Observable<Automation> {
+  public override getSystemStatusAsObservable(): Observable<Automation> {
     return this.systemStatus.asObservable();
   }
 
-  public getEcuAlarmAsObservable(): Observable<boolean> {
+  public override isSystemStatusAvailableAsObservable(): Observable<boolean> {
+    return this.getSystemStatusAsObservable().pipe(
+      map((status) => !!status));
+  }
+
+  public override getEcuAlarmAsObservable(): Observable<boolean> {
     return this.getSystemStatusAsObservable().pipe(
       filter((status) => !!status),
       map((status: Automation) => status.getEcu()));
   }
 
-  public reconnect() {
+  public override getGateAsObservable(): Observable<boolean> {
+    return this.getSystemStatusAsObservable().pipe(
+      filter((status) => !!status),
+      map((status: Automation) => status.getGate()));
+  }
+
+  public override reconnect() {
     this.unsubscribeAll();
     this.disconnect();
     this.createConnection();

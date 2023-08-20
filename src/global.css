@@ -8,23 +8,19 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
-
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
-
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
-
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
 .d-flex {
   display: flex;
 }
@@ -63,18 +59,21 @@
 .icon-button.font-big {
   font-size: 6rem;
 }
+
 .icon-button.font-extra-big {
   font-size: 7rem;
 }
+
 .icon-button.font-small {
   font-size: 4rem;
 }
+
 .icon-button.font-extra-small {
   font-size: 3rem;
 }
 
-.icon-button.dark  {
-    color: black;
+.icon-button.dark {
+  color: black;
 }
 
 .icon-button.on {
@@ -106,3 +105,5 @@
   --background: linear-gradient(45deg, #ce76ff, #ad2dfc);
   --box-shadow: 0 4px 6px rgb(82, 34, 0, 0.5);
 }
+
+/*# sourceMappingURL=global.css.map */

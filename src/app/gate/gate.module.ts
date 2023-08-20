@@ -5,14 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { GatePage } from './gate-page.component';
 
 import { GatePageRoutingModule } from './gate-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    GatePageRoutingModule
-  ],
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        GatePageRoutingModule,
+        SharedModule
+    ],
   declarations: [GatePage]
 })
 export class GatePageModule {}

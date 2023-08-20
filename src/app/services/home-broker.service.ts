@@ -9,7 +9,11 @@ export abstract class HomeBrokerService {
 
   abstract getSystemStatusAsObservable(): Observable<Automation>;
 
+  abstract isSystemStatusAvailableAsObservable(): Observable<boolean>;
+
   abstract getEcuAlarmAsObservable(): Observable<boolean>;
+
+  abstract getGateAsObservable(): Observable<boolean>;
 
   abstract reconnect(): void;
 }

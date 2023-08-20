@@ -11,19 +11,30 @@ export class CommandRequestServiceImpl extends CommandRequestService {
     super();
   }
 
-  public sendAlarmEcuToggle() {
+  public override sendAlarmEcuToggle() {
     this.sendCommand(Commands.ALARM_ECU_TOGGLE);
   }
 
-  public sendAlarmEcuSet(state: number) {
+  public override sendAlarmEcuSet(state: number) {
     this.sendCommand(Commands.ALARM_ECU_SET, state);
   }
 
+  public override sendGateEcuToggle() {
+    this.sendCommand(Commands.GATE_ECU_TOGGLE);
+  }
+
+  public override sendGateEcuSet(state: number) {
+    this.sendCommand(Commands.GATE_STOP_TOGGLE, state);
+  }
+
+  public override sendGateStopToggle() {
+    this.sendCommand(Commands.GATE_STOP_TOGGLE);
+  }
+
   private sendCommand(command: string, status?: number) {
-    const commandRequest: CommandRequest = {
-      command: command,
-      state: status
-    };
+    const commandRequest: CommandRequest = (status !== undefined)
+      ? {command: command, state: status}
+      : {command: command};
     this.httpClient.put(this.getCommandUrl(), commandRequest).subscribe();
   }
 

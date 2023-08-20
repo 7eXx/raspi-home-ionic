@@ -23,10 +23,14 @@
   <ion-grid class="ion-padding">
     <ion-row>
       <ion-col class="icon-button-container">
-        <ng-container *ngIf="statusConnected | async; else off">
+        <ng-container *ngIf="isStatusAvailable | async; else off">
           <ion-button class="icon-button" [ngClass]="[ (ecuAlarm | async) ? 'on' : 'off' ]"
                       (click)="toggleAlarmEcu()">
-            {{ (ecuAlarm | async) ? "ON" : "OFF" }}
+            <ion-icon *ngIf="ecuAlarm | async; else lockOpen"
+                      name="lock-closed"></ion-icon>
+            <ng-template #lockOpen>
+              <ion-icon name="lock-open"></ion-icon>
+            </ng-template>
           </ion-button>
         </ng-container>
         <ng-template #off>

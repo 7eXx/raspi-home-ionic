@@ -16,6 +16,14 @@ export class HomeBrokerServiceMock extends HomeBrokerService {
     return of(false);
   }
 
+  isSystemStatusAvailableAsObservable(): Observable<boolean> {
+    return of(true);
+  }
+
+  getGateAsObservable(): Observable<boolean> {
+    return of(true);
+  }
+
   reconnect(): void {
   }
 

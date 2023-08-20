@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
 import {HomeBrokerService} from '../services/home-broker.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-alarm',
@@ -10,9 +11,8 @@ import {HomeBrokerService} from '../services/home-broker.service';
 })
 export class AlarmPage implements OnInit {
 
-  isAlarmActive = false;
-
   statusConnected: Observable<boolean>;
+  isStatusAvailable: Observable<boolean>;
   ecuAlarm: Observable<boolean>;
 
   constructor(
@@ -20,7 +20,11 @@ export class AlarmPage implements OnInit {
     private commandRequestService: CommandRequestService) {}
 
   ngOnInit() {
-    this.statusConnected = this.homeBrokerService.isConnectedAsObservable();
+    this.isStatusAvailable = combineLatest([
+      this.homeBrokerService.isConnectedAsObservable(),
+      this.homeBrokerService.isSystemStatusAvailableAsObservable()
+    ]).pipe(
+      map(([isConnected, isStatusAvailable]) => isConnected && isStatusAvailable));
     this.ecuAlarm = this.homeBrokerService.getEcuAlarmAsObservable();
   }
 
@@ -28,15 +32,7 @@ export class AlarmPage implements OnInit {
     this.homeBrokerService.reconnect();
   }
 
-  setAlarmEcu(state: number) {
-    this.commandRequestService.sendAlarmEcuSet(state);
-  }
-
   toggleAlarmEcu() {
     this.commandRequestService.sendAlarmEcuToggle();
-  }
-
-  toggleAlarm() {
-    this.isAlarmActive = !this.isAlarmActive;
   }
 }
