@@ -21,16 +21,16 @@
   </ion-header>
   <app-connection-state></app-connection-state>
   <ion-grid>
-    <ion-row class="icon-button-container">
-      <ion-col class="d-flex ion-justify-content-center">
-        <ng-container *ngIf="isStatusAvailable | async; else off">
+    <ion-row>
+      <ion-col class="d-flex ion-justify-content-center ion-align-items-center">
+        <ng-container *ngIf="isStatusAvailable | async; else offSmall">
           <ion-button class="icon-button small active"
                       (click)="stopGate()">
-            <ion-icon name="stop"></ion-icon>
+            <ion-icon name="pause-circle"></ion-icon>
           </ion-button>
         </ng-container>
       </ion-col>
-      <ion-col class="d-flex ion-justify-content-center">
+      <ion-col class="d-flex ion-justify-content-center ion-align-items-center">
         <ng-container *ngIf="isStatusAvailable | async; else off">
             <ion-button class="icon-button" [ngClass]="[ (ecuGate | async) ? 'open' : 'close' ]"
                         (click)="toggleGate()">
@@ -44,4 +44,8 @@
 
 <ng-template #off>
   <ion-button class="icon-button">N/A</ion-button>
+</ng-template>
+
+<ng-template #offSmall>
+  <ion-button class="icon-button small">N/A</ion-button>
 </ng-template>
