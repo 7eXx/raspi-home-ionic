@@ -25,16 +25,19 @@
   display: flex;
 }
 
-.icon-button-container {
+.height-100 {
+  height: calc(100% - 30px);
+}
+
+.d-flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 40px);
 }
 
 .icon-button {
   --background: linear-gradient(45deg, #3d3d3d, #1e1e1e);
-  --border-radius: 20px;
+  --border-radius: 30px;
   --box-shadow: 0 4px 6px rgba(19, 19, 19, 0.1);
   --padding-bottom: 30px;
   --padding-top: 30px;
@@ -42,8 +45,8 @@
   --padding-start: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: white;
-  width: 250px;
-  height: 200px;
+  width: min(250px, 60vw);
+  height: min(200px, 50vw);
   font-size: 5rem;
   display: flex;
   justify-content: center;
@@ -52,8 +55,8 @@
 }
 
 .icon-button.small {
-  width: 200px;
-  height: 150px;
+  width: min(200px, 50vw);
+  height: min(150px, 40vw);
 }
 
 .icon-button.font-big {

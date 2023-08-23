@@ -20,8 +20,8 @@
     </ion-toolbar>
   </ion-header>
   <app-connection-state></app-connection-state>
-  <ion-grid>
-    <ion-row>
+  <ion-grid class="height-100 ion-padding">
+    <ion-row class="d-flex-center" style="height: 100%">
       <ion-col class="d-flex ion-justify-content-center ion-align-items-center">
         <ng-container *ngIf="isStatusAvailable | async; else offSmall">
           <ion-button class="icon-button small active"
