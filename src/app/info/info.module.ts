@@ -6,10 +6,11 @@ import { InfoPage } from './info-page.component';
 import { NgxGaugeModule } from 'ngx-gauge';
 
 import { InfoPageRoutingModule } from './info-routing.module';
-import { CpuComponent } from '../components/cpu/cpu.component';
+import { CpuLoadComponent } from '../components/cpu-load/cpu-load.component';
 import { MemoryComponent } from '../components/memory/memory.component';
 import { DiskComponent } from '../components/disk/disk.component';
 import {SharedModule} from '../shared/shared.module';
+import {CpuTemperatureComponent} from '../components/cpu-temperature/cpu-temperature.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {SharedModule} from '../shared/shared.module';
     ],
   declarations: [
     InfoPage,
-    CpuComponent,
+    CpuLoadComponent,
+    CpuTemperatureComponent,
     MemoryComponent,
     DiskComponent
   ]

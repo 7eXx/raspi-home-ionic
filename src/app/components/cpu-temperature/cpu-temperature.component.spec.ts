@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CpuComponent } from './cpu.component';
+import { CpuTemperatureComponent } from './cpu-temperature.component';
 
-describe('CpuComponent', () => {
-  let component: CpuComponent;
-  let fixture: ComponentFixture<CpuComponent>;
+describe('CpuTemperatureComponent', () => {
+  let component: CpuTemperatureComponent;
+  let fixture: ComponentFixture<CpuTemperatureComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CpuComponent ],
+      declarations: [ CpuTemperatureComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CpuComponent);
+    fixture = TestBed.createComponent(CpuTemperatureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -59,23 +59,23 @@
   height: min(150px, 40vw);
 }
 
-.icon-button.font-big {
+.font-big {
   font-size: 6rem;
 }
 
-.icon-button.font-extra-big {
+.font-extra-big {
   font-size: 7rem;
 }
 
-.icon-button.font-small {
+.font-small {
   font-size: 4rem;
 }
 
-.icon-button.font-extra-small {
+.font-extra-small {
   font-size: 3rem;
 }
 
-.icon-button.dark {
+.dark {
   color: black;
 }
 

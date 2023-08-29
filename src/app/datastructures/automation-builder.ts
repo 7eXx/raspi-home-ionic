@@ -30,7 +30,7 @@ export class AutomationBuilder {
   public parseCpuInfo(): CpuInfo {
     const cpuPayload = this.payload.systemInfo?.cpu;
     if (!cpuPayload) {
-      throw new Error('Error on parsing cpu info');
+      throw new Error('Error on parsing cpu-load info');
     }
 
     return Object.assign(new CpuInfo(), cpuPayload);
