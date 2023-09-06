@@ -62,7 +62,7 @@ describe('Automation Builder testing', () => {
     expect(systemInfo).toBeDefined();
   });
 
-  it('should parse cpu info from payload', () => {
+  it('should parse cpu-load info from payload', () => {
     automationBuilder = new AutomationBuilder(payload);
     const cpu = automationBuilder.parseCpuInfo();
     expect(cpu.percentage).toBe(13.1);

@@ -1,13 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="car-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Gate</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onReconnect()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ title }}</ion-title>
+      <ion-title size="large">Gate</ion-title>
     </ion-toolbar>
   </ion-header>
+  <app-connection-state></app-connection-state>
+  <ion-grid class="height-100 ion-padding">
+    <ion-row class="d-flex-center" style="height: 100%">
+      <ion-col class="d-flex ion-justify-content-center ion-align-items-center">
+        <ng-container *ngIf="isStatusAvailable | async; else offSmall">
+          <ion-button class="icon-button small active"
+                      (click)="stopGate()">
+            <ion-icon name="pause-circle"></ion-icon>
+          </ion-button>
+        </ng-container>
+      </ion-col>
+      <ion-col class="d-flex ion-justify-content-center ion-align-items-center">
+        <ng-container *ngIf="isStatusAvailable | async; else off">
+            <ion-button class="icon-button" [ngClass]="[ (ecuGate | async) ? 'open' : 'close' ]"
+                        (click)="toggleGate()">
+              <ion-icon name="car-sport"></ion-icon>
+            </ion-button>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ng-template #off>
+  <ion-button class="icon-button">N/A</ion-button>
+</ng-template>
+
+<ng-template #offSmall>
+  <ion-button class="icon-button small">N/A</ion-button>
+</ng-template>

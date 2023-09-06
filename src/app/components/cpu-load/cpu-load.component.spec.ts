@@ -1,28 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { DiskComponent } from './disk.component';
+import { CpuLoadComponent } from './cpu-load.component';
 
-describe('DiskComponent', () => {
-  let component: DiskComponent;
-  let fixture: ComponentFixture<DiskComponent>;
+describe('CpuComponent', () => {
+  let component: CpuLoadComponent;
+  let fixture: ComponentFixture<CpuLoadComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DiskComponent ],
+      declarations: [ CpuLoadComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DiskComponent);
-
+    fixture = TestBed.createComponent(CpuLoadComponent);
     component = fixture.componentInstance;
-    component.disk = {
-      total: 500,
-      used:  250,
-      free: 250,
-      percentage: 50,
-      unit: 'GB'
-    };
     fixture.detectChanges();
   }));
 

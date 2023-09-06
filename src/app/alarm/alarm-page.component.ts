@@ -1,14 +1,38 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {combineLatest, Observable} from 'rxjs';
+import {CommandRequestService} from '../services/command-request.service';
+import {HomeBrokerService} from '../services/home-broker.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-alarm',
   templateUrl: 'alarm-page.component.html',
   styleUrls: ['alarm-page.component.scss']
 })
-export class AlarmPage {
+export class AlarmPage implements OnInit {
 
-  title = 'Alarm';
+  statusConnected: Observable<boolean>;
+  isStatusAvailable: Observable<boolean>;
+  ecuAlarm: Observable<boolean>;
 
-  constructor() {}
+  constructor(
+    private homeBrokerService: HomeBrokerService,
+    private commandRequestService: CommandRequestService) {}
 
+  ngOnInit() {
+    this.isStatusAvailable = combineLatest([
+      this.homeBrokerService.isConnectedAsObservable(),
+      this.homeBrokerService.isSystemStatusAvailableAsObservable()
+    ]).pipe(
+      map(([isConnected, isStatusAvailable]) => isConnected && isStatusAvailable));
+    this.ecuAlarm = this.homeBrokerService.getEcuAlarmAsObservable();
+  }
+
+  onReconnect() {
+    this.homeBrokerService.reconnect();
+  }
+
+  toggleAlarmEcu() {
+    this.commandRequestService.sendAlarmEcuToggle();
+  }
 }

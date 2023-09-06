@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import { Automation } from '../datastructures/automation.datastructure';
 import { HomeBrokerService } from '../services/home-broker.service';
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-info',
@@ -10,19 +11,22 @@ import { HomeBrokerService } from '../services/home-broker.service';
 })
 export class InfoPage implements OnInit {
 
-  title = 'Info';
-  isConnected: Observable<boolean>;
+  isStatusAvailable: Observable<boolean>;
   systemStatus: Observable<Automation>;
 
   constructor(private homeBrokerService: HomeBrokerService) {}
 
   public ngOnInit(): void {
-    this.retrieveSystemStatus();
-  }
+    this.isStatusAvailable = combineLatest([
+      this.homeBrokerService.isConnectedAsObservable(),
+      this.homeBrokerService.isSystemStatusAvailableAsObservable()
+    ]).pipe(
+      map(([isConnected, isStatusAvailable]) => isConnected && isStatusAvailable));
 
-  private retrieveSystemStatus(): void {
-    this.isConnected = this.homeBrokerService.isConnectedAsObservable();
     this.systemStatus = this.homeBrokerService.getSystemStatusAsObservable();
   }
 
+  onReconnect()  {
+    this.homeBrokerService.reconnect();
+  }
 }
