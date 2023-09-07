@@ -24,9 +24,6 @@ setArgs()
         showHelp
         exit 0
         ;;
-      "--arm")
-        platform="linux/arm/v6"
-        ;;
       "--no-push")
         no_push="no-push"
         ;;
@@ -39,25 +36,7 @@ setArgs()
   done
 }
 
-setArgs()
-{
-  while [ "${1:-}" != "" ]; do
-    case "$1" in
-      "-h" | "--help")
-        showHelp
-        exit 0
-        ;;
-      "--no-push")
-        no_push="no-push"
-        ;;
-      *)
-        showHelp
-        exit 0
-        ;;
-    esac
-    shift
-  done
-}
+setArgs "$@"
 
 # If private docker registry is not defined, login to Docker.io
 if [ -z ${PRIVATE_DOCKER_REGISTRY} ]; then
@@ -79,7 +58,6 @@ commit_image_name=${image_name}:${commit_hash}
 echo "docker image commit hash - ${commit_image_name}"
 
 docker build . \
-    --platform ${platform} \
     -t ${full_image_name} \
     -t ${branch_image_name} \
     -t ${commit_image_name}
