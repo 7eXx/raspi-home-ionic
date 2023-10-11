@@ -58,6 +58,7 @@ commit_image_name=${image_name}:${commit_hash}
 echo "docker image commit hash - ${commit_image_name}"
 
 docker build . \
+    -f docker/Dockerfile \
     -t ${full_image_name} \
     -t ${branch_image_name} \
     -t ${commit_image_name}

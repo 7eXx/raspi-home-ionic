@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   mqtt: {
     protocol: 'ws',
-    server: '192.168.0.95',
+    host: 'mosquitto.raspi-home',
     port: 9001,
     clientId: 'ionic-client',
     timeout: 3000,
@@ -10,8 +10,5 @@ export const environment = {
     statusTopic: 'mqtt/status',
     commandTopic: 'mqtt/command',
   },
-  flask: {
-    server: '127.0.0.1',
-    port: 5000,
-  }
+  apiServerUrl: 'http://backend.raspi-home:5000'
 };

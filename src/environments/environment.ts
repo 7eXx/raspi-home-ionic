@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   mqtt: {
     protocol: 'ws',
-    server: '192.168.0.12',
+    host: '192.168.0.12',
     port: 9001,
     clientId: 'ionic-client',
     timeout: 3000,
@@ -14,10 +14,7 @@ export const environment = {
     statusTopic: 'mqtt/status',
     commandTopic: 'mqtt/command',
   },
-  flask: {
-    server: '192.168.0.12',
-    port: 5000,
-  }
+  apiServerUrl: 'http://192.168.0.12:5000'
 };
 
 /*

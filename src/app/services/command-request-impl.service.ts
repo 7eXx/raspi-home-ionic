@@ -39,6 +39,6 @@ export class CommandRequestServiceImpl extends CommandRequestService {
   }
 
   private getCommandUrl() {
-    return `http://${environment.flask.server}:${environment.flask.port}/command`;
+    return `${environment.apiServerUrl}/command`;
   }
 }
