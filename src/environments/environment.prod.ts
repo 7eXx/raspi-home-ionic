@@ -6,9 +6,9 @@ export const environment = {
     port: 9001,
     clientId: 'ionic-client',
     timeout: 3000,
-    path: '/mqtt',
+    path: '/api/ws/mqtt',
     statusTopic: 'mqtt/status',
     commandTopic: 'mqtt/command',
   },
-  apiServerUrl: 'http://backend.raspi-home:5000'
+  apiServerUrl: '/api'
 };

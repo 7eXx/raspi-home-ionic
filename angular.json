@@ -49,6 +49,9 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                }, {
+                  "replace": "src/app/services/mqtt-options.ts",
+                  "with": "src/app/services/mqtt-options.prod.ts"
                 }
               ],
               "optimization": true,
