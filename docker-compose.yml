@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   raspi_home_app:
-    container_name: raspi-home-ionic
     image: "${PRIVATE_DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
     ports:
       - 8100:80
