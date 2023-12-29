@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 export const mqttOptions: IMqttServiceOptions = {
   connectOnCreate: false,
   protocol: environment.mqtt.protocol === 'wss'? 'wss': 'ws',
-  connectTimeout: environment.mqtt.timeout,
+  hostname: environment.mqtt.hostname,
+  port: environment.mqtt.port,
   path: environment.mqtt.path,
+  connectTimeout: environment.mqtt.timeout,
 };
