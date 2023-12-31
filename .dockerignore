@@ -1,0 +1,13 @@
+.angular
+.idea
+
+android
+
+node_modules
+
+www
+
+/**/Dockerfile
+/**/*.dockerfile
+docker-compose.yaml
+docker-compose.yml
