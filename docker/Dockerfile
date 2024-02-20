@@ -1,7 +1,7 @@
 # ----------------------
 # build from source
 # ----------------------
-FROM node:18 as build
+FROM --platform=linux/amd64 node:18 as build
 
 WORKDIR /app
 
@@ -15,7 +15,7 @@ RUN npm run build:production
 # ---------------------
 # run with nginx
 # ---------------------
-FROM nginx:stable
+FROM --platform=${TARGETPLATFORM:-linux/amd64} nginx:stable
 
 COPY --from=build /app/www /var/www/html
 
