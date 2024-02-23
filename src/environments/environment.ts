@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   mqtt: {
     protocol: 'ws',
-    hostname: 'localhost',
+    hostname: '192.168.0.64',
     port: 9001,
     clientId: 'ionic-client',
     timeout: 3000,
@@ -14,7 +14,7 @@ export const environment = {
     statusTopic: 'mqtt/status',
     commandTopic: 'mqtt/command',
   },
-  apiServerUrl: 'http://localhost:5000/api'
+  apiServerUrl: 'http://192.168.0.64:5000/api'
 };
 
 /*

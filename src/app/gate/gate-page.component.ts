@@ -3,6 +3,7 @@ import {HomeBrokerService} from '../services/home-broker.service';
 import {combineLatest, Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
 import {map} from 'rxjs/operators';
+import {Vibration} from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-gate',
@@ -14,7 +15,8 @@ export class GatePage implements OnInit {
   isStatusAvailable: Observable<boolean>;
   ecuGate: Observable<boolean>;
 
-  constructor(private homeBrokerService: HomeBrokerService,
+  constructor(private vibration: Vibration,
+              private homeBrokerService: HomeBrokerService,
               private commandRequestService: CommandRequestService) {}
 
   ngOnInit(): void {
@@ -30,11 +32,13 @@ export class GatePage implements OnInit {
     this.homeBrokerService.reconnect();
   }
 
-  stopGate() {
+  async stopGate() {
     this.commandRequestService.sendGateStopToggle();
+    this.vibration.vibrate(300);
   }
 
-  toggleGate() {
+  async toggleGate() {
     this.commandRequestService.sendGateEcuToggle();
+    this.vibration.vibrate(300);
   }
 }
