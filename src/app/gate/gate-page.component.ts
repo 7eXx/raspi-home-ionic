@@ -3,8 +3,7 @@ import {HomeBrokerService} from '../services/home-broker.service';
 import {combineLatest, Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
 import {map} from 'rxjs/operators';
-import {Haptics} from '@capacitor/haptics';
-import {Vibration} from "@ionic-native/vibration/ngx";
+import {Vibration} from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-gate',

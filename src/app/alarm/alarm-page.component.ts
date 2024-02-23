@@ -3,7 +3,7 @@ import {combineLatest, Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
 import {HomeBrokerService} from '../services/home-broker.service';
 import {map} from 'rxjs/operators';
-import {Vibration} from "@ionic-native/vibration/ngx";
+import {Vibration} from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-alarm',
