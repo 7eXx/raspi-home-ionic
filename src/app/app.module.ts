@@ -14,6 +14,7 @@ import {CommandRequestService} from './services/command-request.service';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {CommandRequestServiceImpl} from './services/command-request-impl.service';
+import {Vibration} from '@ionic-native/vibration/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,9 +24,10 @@ import {CommandRequestServiceImpl} from './services/command-request-impl.service
     MqttModule.forRoot(mqttOptions),
     HttpClientModule,
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
+    Vibration,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy,

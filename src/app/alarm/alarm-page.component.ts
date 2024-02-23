@@ -3,6 +3,7 @@ import {combineLatest, Observable} from 'rxjs';
 import {CommandRequestService} from '../services/command-request.service';
 import {HomeBrokerService} from '../services/home-broker.service';
 import {map} from 'rxjs/operators';
+import {Vibration} from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-alarm',
@@ -16,6 +17,7 @@ export class AlarmPage implements OnInit {
   ecuAlarm: Observable<boolean>;
 
   constructor(
+    private vibration: Vibration,
     private homeBrokerService: HomeBrokerService,
     private commandRequestService: CommandRequestService) {}
 
@@ -34,5 +36,6 @@ export class AlarmPage implements OnInit {
 
   toggleAlarmEcu() {
     this.commandRequestService.sendAlarmEcuToggle();
+    this.vibration.vibrate(500);
   }
 }
