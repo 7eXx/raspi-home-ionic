@@ -39,6 +39,6 @@ export class CommandRequestServiceImpl extends CommandRequestService {
   }
 
   private getCommandUrl() {
-    return `${environment.apiServerUrl}/command`;
+    return `/api/command`;
   }
 }
