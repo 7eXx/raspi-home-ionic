@@ -6,15 +6,15 @@ export const environment = {
   production: false,
   mqtt: {
     protocol: 'ws',
-    hostname: '192.168.0.64',
+    hostname: 'mosquitto.raspi-home',
     port: 9001,
-    clientId: 'ionic-client',
-    timeout: 3000,
+    baseUrl: '',
     path: '/mqtt',
+    timeout: 3000,
     statusTopic: 'mqtt/status',
     commandTopic: 'mqtt/command',
   },
-  apiServerUrl: 'http://192.168.0.64:5000/api'
+  apiServerUrl: '/api'
 };
 
 /*
