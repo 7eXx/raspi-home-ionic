@@ -1,11 +1,17 @@
 import { IMqttServiceOptions } from 'ngx-mqtt';
 import { environment } from 'src/environments/environment';
 
-export const mqttOptions: IMqttServiceOptions = {
+let mqttUrl = environment.mqtt.baseUrl;
+if (!mqttUrl) {
+  mqttUrl = window.location.origin;
+}
+
+const mqttOptions: IMqttServiceOptions = {
   connectOnCreate: false,
-  hostname: environment.mqtt.hostname,
-  port: environment.mqtt.port,
+  url: mqttUrl,
   protocol: environment.mqtt.protocol === 'wss'? 'wss': 'ws',
   path: environment.mqtt.path,
   connectTimeout: environment.mqtt.timeout
 };
+
+export { mqttOptions };

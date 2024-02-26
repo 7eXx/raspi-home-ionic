@@ -2,17 +2,11 @@
   "/api": {
     "target": "http://localhost:5000",
     "secure": false,
-    "ws": true,
-    "pathRewrite": {
-      "^/api": ""
-    }
+    "ws": true
   },
   "/mqtt": {
     "target": "http://localhost:9001",
     "secure": false,
-    "ws": true,
-    "pathRewrite": {
-      "^/mqtt": ""
-    }
+    "ws": true
   }
 }
