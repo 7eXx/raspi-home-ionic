@@ -63,17 +63,24 @@
   height: min(150px, 40vw);
 }
 
-.font-big {
-  font-size: 6rem;
-}
 .font-extra-big {
-  font-size: 7rem;
-}
-.font-small {
-  font-size: 4rem;
-}
-.font-extra-small {
   font-size: 3rem;
+}
+
+.font-big {
+  font-size: 1.5rem;
+}
+
+.font-normal {
+  font-size: 1rem;
+}
+
+.font-small {
+  font-size: 0.75rem;
+}
+
+.font-extra-small {
+  font-size: 0.5rem;
 }
 
 .dark  {

@@ -11,6 +11,7 @@ import { MemoryComponent } from '../components/memory/memory.component';
 import { DiskComponent } from '../components/disk/disk.component';
 import {SharedModule} from '../shared/shared.module';
 import {CpuTemperatureComponent} from '../components/cpu-temperature/cpu-temperature.component';
+import {DatetimeComponent} from "../components/datetime/datetime.component";
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import {CpuTemperatureComponent} from '../components/cpu-temperature/cpu-tempera
     ],
   declarations: [
     InfoPage,
+    DatetimeComponent,
     CpuLoadComponent,
     CpuTemperatureComponent,
     MemoryComponent,

@@ -6,28 +6,37 @@ export class AutomationBuilder {
   constructor(private payload: any) {}
 
   public build(): Automation {
-    const automation = new Automation();
-    automation.setAlarm(Boolean(this.payload.alarm));
-    automation.setEcu(Boolean(this.payload.ecu));
-    automation.setGate(Boolean(this.payload.gate));
-    automation.setSystemInfo(this.parseSystemInfo());
-
-    return automation;
+    return new Automation(
+      Boolean(this.payload.alarm),
+      Boolean(this.payload.ecu),
+      Boolean(this.payload.gate),
+      this.parseSystemInfo()
+    );
   }
 
-  public parseSystemInfo(): SystemInformation {
+  private parseSystemInfo(): SystemInformation {
     const sysPayload = this.payload.systemInfo;
     if (!sysPayload) {
       throw new Error('Error on parse system information');
     }
 
-    return new SystemInformation()
-      .setCpuInfo(this.parseCpuInfo())
-      .setMemoryInfo(this.parseMemoryInfo())
-      .setDiskInfo(this.parseDiskInfo());
+    return new SystemInformation(
+      this.parseDatetime(),
+      this.parseCpuInfo(),
+      this.parseMemoryInfo(),
+      this.parseDiskInfo());
   }
 
-  public parseCpuInfo(): CpuInfo {
+  private parseDatetime(): string {
+    const datetime = this.payload.systemInfo?.datetime;
+    if (!datetime) {
+      throw new Error('Error on parse datetime');
+    }
+
+    return datetime as string;
+  }
+
+  private parseCpuInfo(): CpuInfo {
     const cpuPayload = this.payload.systemInfo?.cpu;
     if (!cpuPayload) {
       throw new Error('Error on parsing cpu-load info');
@@ -36,7 +45,7 @@ export class AutomationBuilder {
     return Object.assign(new CpuInfo(), cpuPayload);
   }
 
-  public parseMemoryInfo(): MemoryInfo {
+  private parseMemoryInfo(): MemoryInfo {
     const memoryPayload = this.payload.systemInfo?.memory;
     if (!memoryPayload) {
       throw new Error('Error on parsing memory info');
@@ -45,7 +54,7 @@ export class AutomationBuilder {
     return Object.assign(new MemoryInfo(), memoryPayload);
   }
 
-  public parseDiskInfo(): DiskInfo {
+  private parseDiskInfo(): DiskInfo {
     const diskPayload = this.payload.systemInfo?.disk;
     if (!diskPayload) {
       throw new Error('Error on parsing disk info');

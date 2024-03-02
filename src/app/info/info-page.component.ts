@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import { Automation } from '../datastructures/automation.datastructure';
 import { HomeBrokerService } from '../services/home-broker.service';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-info',

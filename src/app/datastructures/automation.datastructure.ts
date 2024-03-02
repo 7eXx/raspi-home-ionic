@@ -6,26 +6,16 @@ export class Automation {
   private gate: boolean;
   private systemInfo: SystemInformation = null;
 
-  constructor() { }
-
-  public setSystemInfo(systemInfo: SystemInformation): Automation {
-    this.systemInfo = systemInfo;
-    return this;
-  }
-
-  public setAlarm(alarm: boolean): Automation {
+  constructor(
+    alarm: boolean,
+    ecu: boolean,
+    gate: boolean,
+    systemInformation: SystemInformation
+  ) {
     this.alarm = alarm;
-    return this;
-  }
-
-  public setEcu(ecu: boolean): Automation {
     this.ecu = ecu;
-    return this;
-  }
-
-  public setGate(gate: boolean): Automation {
     this.gate = gate;
-    return this;
+    this.systemInfo = systemInformation;
   }
 
   public getAlarm(): boolean {

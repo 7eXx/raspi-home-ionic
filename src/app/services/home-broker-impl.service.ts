@@ -7,7 +7,9 @@ import {Automation} from '../datastructures/automation.datastructure';
 import {filter, map} from 'rxjs/operators';
 import {HomeBrokerService} from './home-broker.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HomeBrokerServiceImpl extends HomeBrokerService {
   private messageSub: Subscription;
   private connectSub: Subscription;
