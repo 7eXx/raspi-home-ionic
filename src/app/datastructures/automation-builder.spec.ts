@@ -11,6 +11,7 @@ describe('Automation Builder testing', () => {
       ecu: 0,
       gate: 0,
       systemInfo: {
+        datetime: '01-02-2024 11:21:31',
         cpu: {
           percentage: 13.1,
           minTemp: 0.0,
@@ -41,7 +42,7 @@ describe('Automation Builder testing', () => {
     delete payload.systemInfo.disk;
     automationBuilder = new AutomationBuilder(payload);
     const t = () => {
-      automationBuilder.parseDiskInfo();
+      const automation = automationBuilder.build();
     };
     expect(t).toThrow(Error('Error on parsing disk info'));
   });
@@ -58,13 +59,19 @@ describe('Automation Builder testing', () => {
 
   it ('should parse system info', () => {
     automationBuilder = new AutomationBuilder(payload);
-    const systemInfo = automationBuilder.parseSystemInfo();
+    const systemInfo = automationBuilder.build().getSystemInformation();
     expect(systemInfo).toBeDefined();
+  });
+
+  it('should parse datetime from payload', () => {
+    automationBuilder = new AutomationBuilder(payload);
+    const datetime = automationBuilder.build().getSystemInformation().datetime;
+    expect(datetime).toBe('01-02-2024 11:21:31');
   });
 
   it('should parse cpu-load info from payload', () => {
     automationBuilder = new AutomationBuilder(payload);
-    const cpu = automationBuilder.parseCpuInfo();
+    const cpu = automationBuilder.build().getSystemInformation().cpu;
     expect(cpu.percentage).toBe(13.1);
     expect(cpu.minTemp).toBe(0.0);
     expect(cpu.maxTemp).toBe(100.0);
@@ -73,7 +80,7 @@ describe('Automation Builder testing', () => {
 
   it('should parse memory info from payload', () => {
     automationBuilder = new AutomationBuilder(payload);
-    const memory = automationBuilder.parseMemoryInfo();
+    const memory = automationBuilder.build().getSystemInformation().memory;
     expect(memory.total).toBe(11885.48);
     expect(memory.available).toBe(3248.08);
     expect(memory.percentage).toBe(72.7);
@@ -84,7 +91,7 @@ describe('Automation Builder testing', () => {
 
   it('should parse disk info from payload', () => {
     automationBuilder = new AutomationBuilder(payload);
-    const disk = automationBuilder.parseDiskInfo();
+    const disk = automationBuilder.build().getSystemInformation().disk;
     expect(disk.total).toBe(530.51);
     expect(disk.used).toBe(160.34);
     expect(disk.free).toBe(343.15);
