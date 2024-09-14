@@ -43,15 +43,29 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size-md="6"
+        <ion-col size-md="6" size="12"
                  class="d-flex ion-justify-content-center">
           <app-memory style="width: 100%;"
             [memory]="(systemStatus | async).getSystemInformation().memory"></app-memory>
         </ion-col>
-        <ion-col size-md="6"
+        <ion-col size-md="6" size="12"
                  class="d-flex ion-justify-content-center">
           <app-disk style="width: 100%;"
             [disk]="(systemStatus | async).getSystemInformation().disk"></app-disk>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" size="12"
+                 class="d-flex ion-justify-content-center">
+          <app-wake-on-lan style="width: 100%"
+            [title]="'Wake Ryzen'" [btnText]="'Wake'"
+            [apiUrl]="this.wakeOnLanRequestService.getRyzenUrl()"></app-wake-on-lan>
+        </ion-col>
+        <ion-col size-md="6" size="12"
+                 class="d-flex ion-justify-content-center">
+          <app-wake-on-lan style="width: 100%"
+            [title]="'Wake Luigi Lenovo'" [btnText]="'Wake'"
+            [apiUrl]="this.wakeOnLanRequestService.getLuigiLenovoUrl()"></app-wake-on-lan>
         </ion-col>
       </ion-row>
     </ion-grid>
