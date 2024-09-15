@@ -1,0 +1,24 @@
+
+.wol-btn {
+  background: linear-gradient(45deg, #3498db, #8e44ad);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.wol-btn:hover {
+  background: linear-gradient(45deg, #8e44ad, #3498db);
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wol-btn:active {
+  transform: translateY(-2px);
+}

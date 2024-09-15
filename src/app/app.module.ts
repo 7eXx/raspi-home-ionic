@@ -17,6 +17,8 @@ import {CommandRequestServiceImpl} from './services/command-request-impl.service
 import {Vibration} from '@ionic-native/vibration/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {WakeOnLanRequestService} from './services/wake-on-lan-request.service';
+import {WakeOnLanRequestServiceImpl} from './services/wake-on-lan-request-impl.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,6 +46,7 @@ import { environment } from '../environments/environment';
       useClass: HomeBrokerServiceImpl
     },
     {provide: CommandRequestService, useClass: CommandRequestServiceImpl},
+    {provide: WakeOnLanRequestService, useClass: WakeOnLanRequestServiceImpl},
     Vibration
   ],
   bootstrap: [AppComponent],

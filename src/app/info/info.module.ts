@@ -11,7 +11,8 @@ import { MemoryComponent } from '../components/memory/memory.component';
 import { DiskComponent } from '../components/disk/disk.component';
 import {SharedModule} from '../shared/shared.module';
 import {CpuTemperatureComponent} from '../components/cpu-temperature/cpu-temperature.component';
-import {DatetimeComponent} from "../components/datetime/datetime.component";
+import {DatetimeComponent} from '../components/datetime/datetime.component';
+import {WakeOnLanComponent} from '../components/wake-on-lan/wake-on-lan.component';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import {DatetimeComponent} from "../components/datetime/datetime.component";
     CpuLoadComponent,
     CpuTemperatureComponent,
     MemoryComponent,
-    DiskComponent
+    DiskComponent,
+    WakeOnLanComponent
   ]
 })
 export class InfoPageModule {}

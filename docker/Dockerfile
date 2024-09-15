@@ -15,7 +15,7 @@ RUN npm run build:production
 # ---------------------
 # run with nginx
 # ---------------------
-FROM --platform=${TARGETPLATFORM:-linux/amd64} nginx:stable
+FROM --platform=${TARGETPLATFORM:-linux/amd64} nginx:1.24-bullseye
 
 COPY --from=build /app/www /var/www/html
 
@@ -30,4 +30,3 @@ RUN chmod +x /docker-entrypoint.d/setup-environment.sh
 
 EXPOSE 80
 EXPOSE 443
-
