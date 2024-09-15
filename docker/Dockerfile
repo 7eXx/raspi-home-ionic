@@ -15,7 +15,7 @@ RUN npm run build:production
 # ---------------------
 # run with nginx
 # ---------------------
-FROM --platform=${TARGETPLATFORM:-linux/amd64} nginx:1.24-bullseye
+FROM --platform=${TARGETPLATFORM:-linux/amd64} nginx:stable
 
 COPY --from=build /app/www /var/www/html
 
