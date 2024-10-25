@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   mqtt: {
-    protocol: 'ws',
+    protocol: 'wss',
     hostname: 'mosquitto.raspi-home',
     port: 9001,
     baseUrl: '',
