@@ -7,4 +7,5 @@ export class Commands {
   public static readonly GATE_ECU_TOGGLE = 'gate_ecu_toggle';
   public static readonly GATE_ECU_SET = 'gate_ecu_set';
   public static readonly GATE_STOP_TOGGLE = 'gate_stop_toggle';
+  public static readonly HOME_AWAY_TOGGLE = 'home_away_toggle';
 }

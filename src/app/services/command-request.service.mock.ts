@@ -2,18 +2,21 @@ import {CommandRequestService} from './command-request.service';
 
 export class CommandRequestServiceMock extends CommandRequestService {
 
-  sendAlarmEcuSet(state: number): void {
+  override sendAlarmEcuSet(state: number): void {
   }
 
-  sendAlarmEcuToggle(): void {
+  override sendAlarmEcuToggle(): void {
   }
 
-  sendGateEcuSet(state: number) {
+  override sendGateEcuSet(state: number) {
   }
 
-  sendGateEcuToggle(): void {
+  override sendGateEcuToggle(): void {
   }
 
-  sendGateStopToggle() {
+  override sendGateStopToggle() {
+  }
+
+  override sendHomeAwayModeToggle() {
   }
 }

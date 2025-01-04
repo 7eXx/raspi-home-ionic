@@ -31,6 +31,10 @@ export class CommandRequestServiceImpl extends CommandRequestService {
     this.sendCommand(Commands.GATE_STOP_TOGGLE);
   }
 
+  public override sendHomeAwayModeToggle() {
+    this.sendCommand(Commands.HOME_AWAY_TOGGLE);
+  }
+
   private sendCommand(command: string, status?: number) {
     const commandRequest: CommandRequest = (status !== undefined)
       ? {command: command, state: status}
