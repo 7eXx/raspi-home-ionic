@@ -20,4 +20,6 @@ export abstract class CommandRequestService {
   abstract sendGateEcuSet(state: number);
 
   abstract sendGateStopToggle();
+
+  abstract sendHomeAwayModeToggle();
 }

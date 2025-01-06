@@ -1,25 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {combineLatest, Observable} from 'rxjs';
-import {CommandRequestService} from '../services/command-request.service';
-import {HomeBrokerService} from '../services/home-broker.service';
-import {map} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 import {Vibration} from '@ionic-native/vibration/ngx';
+import {HomeBrokerService} from '../services/home-broker.service';
+import {CommandRequestService} from '../services/command-request.service';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-alarm',
-  templateUrl: 'alarm-page.component.html',
-  styleUrls: ['alarm-page.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
-export class AlarmPage implements OnInit {
+export class HomeComponent implements OnInit {
 
-  statusConnected: Observable<boolean>;
   isStatusAvailable: Observable<boolean>;
   ecuAlarm: Observable<boolean>;
+
 
   constructor(
     private vibration: Vibration,
     private homeBrokerService: HomeBrokerService,
-    private commandRequestService: CommandRequestService) {}
+    private commandRequestService: CommandRequestService,
+  ) { }
 
   ngOnInit() {
     this.isStatusAvailable = combineLatest([
@@ -34,8 +35,8 @@ export class AlarmPage implements OnInit {
     this.homeBrokerService.reconnect();
   }
 
-  async toggleAlarmEcu() {
-    this.commandRequestService.sendAlarmEcuToggle();
+  async toggleHomeAway() {
+    this.commandRequestService.sendHomeAwayModeToggle();
     this.vibration.vibrate(300);
   }
 }

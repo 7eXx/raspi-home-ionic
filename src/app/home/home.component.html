@@ -2,10 +2,10 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
-        <ion-icon slot="icon-only" name="warning-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Alarm</ion-title>
+    <ion-title>Home</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onReconnect()">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
@@ -25,11 +25,11 @@
       <ion-col>
         <ng-container *ngIf="isStatusAvailable | async; else off">
           <ion-button class="icon-button" [ngClass]="[ (ecuAlarm | async) ? 'on' : 'off' ]"
-                      (click)="toggleAlarmEcu()">
+                      (click)="toggleHomeAway()">
             <ion-icon *ngIf="ecuAlarm | async; else lockOpen"
-                      name="lock-closed"></ion-icon>
+                      name="shield-checkmark"></ion-icon>
             <ng-template #lockOpen>
-              <ion-icon name="lock-open"></ion-icon>
+              <ion-icon name="home"></ion-icon>
             </ng-template>
           </ion-button>
         </ng-container>
