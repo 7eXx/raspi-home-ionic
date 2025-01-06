@@ -12,7 +12,6 @@ import {map} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  statusConnected: Observable<boolean>;
   isStatusAvailable: Observable<boolean>;
   ecuAlarm: Observable<boolean>;
 
