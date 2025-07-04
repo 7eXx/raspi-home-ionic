@@ -1,7 +1,7 @@
 import {Automation} from './automation.datastructure';
 import {CpuInfo, DiskInfo, MemoryInfo, SystemInformation} from './system-information.datastructure';
 import {EnvironmentInformation} from './environment-information.datastructure';
-import {EnvironmentInfoBuilder} from "./environment-info-builder";
+import {EnvironmentInfoBuilder} from './environment-info-builder';
 
 export class AutomationBuilder {
 
@@ -69,6 +69,8 @@ export class AutomationBuilder {
   private parseEnvironmentInfo(): EnvironmentInformation {
     const envPayload = this.payload.environmentInfo;
     if (!envPayload) {
+      // todo: in case of old payload without environment
+      // must return a default environment with status N/A
       throw new Error('Error on parse environment information');
     }
 
