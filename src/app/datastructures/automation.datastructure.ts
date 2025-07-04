@@ -1,21 +1,25 @@
 import { SystemInformation } from './system-information.datastructure';
+import {EnvironmentInformation} from './environment-information.datastructure';
 
 export class Automation {
   private alarm: boolean;
   private ecu: boolean;
   private gate: boolean;
   private systemInfo: SystemInformation = null;
+  private environmentInfo: EnvironmentInformation = null;
 
   constructor(
     alarm: boolean,
     ecu: boolean,
     gate: boolean,
-    systemInformation: SystemInformation
+    systemInformation: SystemInformation,
+    environmentInformation: EnvironmentInformation,
   ) {
     this.alarm = alarm;
     this.ecu = ecu;
     this.gate = gate;
     this.systemInfo = systemInformation;
+    this.environmentInfo = environmentInformation;
   }
 
   public getAlarm(): boolean {
@@ -32,5 +36,9 @@ export class Automation {
 
   public getSystemInformation(): SystemInformation {
     return this.systemInfo;
+  }
+
+  public getEnvironmentInformation(): EnvironmentInformation {
+    return this.environmentInfo;
   }
 }

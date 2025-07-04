@@ -11,7 +11,7 @@ export const environment = {
     baseUrl: '',
     path: '/mqtt',
     timeout: 3000,
-    statusTopic: 'mqtt/status',
+    statusTopic: 'mqtt/status_test',
     commandTopic: 'mqtt/command',
   },
   apiServerUrl: '/api'
