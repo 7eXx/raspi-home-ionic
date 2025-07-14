@@ -29,4 +29,12 @@ export class EnvironmentInformation {
     this.temperature = temperature;
     this.humidity = humidity;
   }
+
+  public static createDefault(): EnvironmentInformation {
+    return new EnvironmentInformation(
+      'n/a',
+      null,
+      new TemperatureInfo(),
+      new HumidityInfo());
+  }
 }
