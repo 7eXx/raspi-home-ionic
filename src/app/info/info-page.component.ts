@@ -1,10 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {combineLatest, Observable, Subscription} from 'rxjs';
-import { Automation } from '../datastructures/automation.datastructure';
 import { HomeBrokerService } from '../services/home-broker.service';
 import {filter, map} from 'rxjs/operators';
 import {WakeOnLanRequestService} from '../services/wake-on-lan-request.service';
-import {SystemInformation} from "../datastructures/system-information.datastructure";
+import {SystemInformation} from '../datastructures/system-information.datastructure';
 
 @Component({
   selector: 'app-info',
@@ -14,7 +13,7 @@ import {SystemInformation} from "../datastructures/system-information.datastruct
 export class InfoPage implements OnInit, OnDestroy {
 
   isStatusAvailable: Observable<boolean>;
-  systemInfo: SystemInformation = null;
+  systemInfo: SystemInformation;
 
   private systemInfoSubscription: Subscription;
 
