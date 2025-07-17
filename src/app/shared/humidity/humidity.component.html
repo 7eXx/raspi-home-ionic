@@ -1,0 +1,15 @@
+<ion-card class="tile ion-padding-bottom">
+  <ion-card-header class="d-flex-center">
+    <ion-card-title>
+      <h1 style="font-weight: bolder">Humidity</h1>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content class="d-flex-center">
+    <ngx-gauge
+      [thick]="15" [cap]="'round'"
+      [type]="'arch'" [value]="+humidity.value"
+      [min]="minRange" [max]="maxRange"
+      [label]="'Hum.'" [append]="humidity.unit"></ngx-gauge>
+  </ion-card-content>
+</ion-card>
+

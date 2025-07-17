@@ -23,7 +23,18 @@
   <app-connection-state></app-connection-state>
   <ng-container *ngIf="isStatusAvailable | async; else noStatus">
     <ion-grid [fixed]="true" *ngIf="environmentInfo">
-
+      <ion-row>
+        <ion-col size-md="6" size="12"
+                   class="d-flex ion-justify-content-center">
+          <app-temperature style="width: 100%;"
+            [temperature]="environmentInfo.temperature"></app-temperature>
+        </ion-col>
+        <ion-col size-md="6" size="12"
+                   class="d-flex ion-justify-content-center">
+          <app-humidity style="width: 100%;"
+            [humidity]="environmentInfo.humidity"></app-humidity>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </ng-container>
 
