@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   raspi_home_app:
-    image: "${PRIVATE_DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+    image: registry.texhome.lan/raspi-home-ionic:latest
     env_file:
       - .env
       - .env.local

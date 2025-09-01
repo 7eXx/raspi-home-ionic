@@ -1,4 +1,5 @@
 import { AutomationBuilder } from './automation-builder';
+import {HumidityInfo, TemperatureInfo} from "./environment-information.datastructure";
 
 describe('Automation Builder testing', () => {
 
@@ -33,6 +34,18 @@ describe('Automation Builder testing', () => {
           free: 343.15,
           percentage: 31.8,
           unit: 'GB'
+        }
+      },
+      environmentInfo: {
+        status: 'online',
+        timestamp: '03-07-2025 22:00:00',
+        temperature: {
+          value: '25.3',
+          unit: '°C'
+        },
+        humidity: {
+          value: '50.0',
+          unit: '%'
         }
       }
     };
@@ -97,5 +110,17 @@ describe('Automation Builder testing', () => {
     expect(disk.free).toBe(343.15);
     expect(disk.percentage).toBe(31.8);
     expect(disk.unit).toBe('GB');
+  });
+
+  it('should create default environment info when attribute not exist', () => {
+    delete payload.environmentInfo;
+    automationBuilder = new AutomationBuilder(payload);
+    const environmentInfo = automationBuilder.build().getEnvironmentInformation();
+
+    expect(environmentInfo).toBeDefined();
+    expect(environmentInfo.status).toBe('n/a');
+    expect(environmentInfo.timestamp).toBeNull();
+    expect(environmentInfo.temperature).toEqual(new TemperatureInfo());
+    expect(environmentInfo.humidity).toEqual(new HumidityInfo());
   });
 });

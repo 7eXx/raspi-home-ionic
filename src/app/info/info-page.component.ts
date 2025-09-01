@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import {combineLatest, Observable} from 'rxjs';
-import { Automation } from '../datastructures/automation.datastructure';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {combineLatest, Observable, Subscription} from 'rxjs';
 import { HomeBrokerService } from '../services/home-broker.service';
-import {map} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 import {WakeOnLanRequestService} from '../services/wake-on-lan-request.service';
+import {SystemInformation} from '../datastructures/system-information.datastructure';
 
 @Component({
   selector: 'app-info',
   templateUrl: 'info-page.component.html',
   styleUrls: ['info-page.component.scss']
 })
-export class InfoPage implements OnInit {
+export class InfoPage implements OnInit, OnDestroy {
 
   isStatusAvailable: Observable<boolean>;
-  systemStatus: Observable<Automation>;
+  systemInfo: SystemInformation;
+
+  private systemInfoSubscription: Subscription;
 
   constructor(private homeBrokerService: HomeBrokerService,
               public wakeOnLanRequestService: WakeOnLanRequestService) {}
@@ -25,7 +27,18 @@ export class InfoPage implements OnInit {
     ]).pipe(
       map(([isConnected, isStatusAvailable]) => isConnected && isStatusAvailable));
 
-    this.systemStatus = this.homeBrokerService.getSystemStatusAsObservable();
+    this.systemInfoSubscription = this.homeBrokerService.getSystemStatusAsObservable().pipe(
+        filter((status) => !!status),
+        map(status => status.getSystemInformation())
+    ).subscribe((systemInfo) => {
+      this.systemInfo = systemInfo;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.systemInfoSubscription) {
+      this.systemInfoSubscription.unsubscribe();
+    }
   }
 
   onReconnect()  {

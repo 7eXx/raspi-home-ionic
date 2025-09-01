@@ -1,6 +1,8 @@
 import {environment} from '../../environments/environment';
 import {WakeOnLanRequestService} from './wake-on-lan-request.service';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class WakeOnLanRequestServiceImpl extends WakeOnLanRequestService {
 
   getRyzenUrl(): string {

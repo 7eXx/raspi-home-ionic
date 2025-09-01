@@ -21,37 +21,37 @@
     </ion-toolbar>
   </ion-header>
   <app-connection-state></app-connection-state>
-  <ng-container *ngIf="(isStatusAvailable | async) as status; else noStatus">
-    <ion-grid [fixed]="true">
+  <ng-container *ngIf="isStatusAvailable | async; else noStatus">
+    <ion-grid [fixed]="true" *ngIf="systemInfo">
       <ion-row>
         <ion-col size="12"
                   class="d-flex ion-justify-content-center">
           <app-datetime style="width: 100%"
-            [datetime]="(systemStatus | async).getSystemInformation().datetime"></app-datetime>
+            [datetime]="systemInfo.datetime"></app-datetime>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size-md="6" size="12"
                  class="d-flex ion-justify-content-center">
           <app-cpu-temperature style="width: 100%;"
-            [cpu]="(systemStatus | async).getSystemInformation().cpu"></app-cpu-temperature>
+            [cpu]="systemInfo.cpu"></app-cpu-temperature>
         </ion-col>
         <ion-col size-md="6" size="12"
                  class="d-flex ion-justify-content-center">
           <app-cpu-load style="width: 100%;"
-            [cpu]="(systemStatus | async).getSystemInformation().cpu"></app-cpu-load>
+            [cpu]="systemInfo.cpu"></app-cpu-load>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size-md="6" size="12"
                  class="d-flex ion-justify-content-center">
           <app-memory style="width: 100%;"
-            [memory]="(systemStatus | async).getSystemInformation().memory"></app-memory>
+            [memory]="systemInfo.memory"></app-memory>
         </ion-col>
         <ion-col size-md="6" size="12"
                  class="d-flex ion-justify-content-center">
           <app-disk style="width: 100%;"
-            [disk]="(systemStatus | async).getSystemInformation().disk"></app-disk>
+            [disk]="systemInfo.disk"></app-disk>
         </ion-col>
       </ion-row>
       <ion-row>

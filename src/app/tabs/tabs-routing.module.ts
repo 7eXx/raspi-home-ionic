@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../gate/gate.module').then(m => m.GatePageModule)
       },
       {
+        path: 'environment',
+        loadChildren: () => import('../environment-info/environment-info.module').then(m => m.EnvironmentInfoPageModule)
+      },
+      {
         path: 'info',
         loadChildren: () => import('../info/info.module').then(m => m.InfoPageModule)
       },

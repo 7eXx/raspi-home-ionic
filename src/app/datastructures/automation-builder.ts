@@ -1,5 +1,7 @@
-import { Automation } from './automation.datastructure';
-import { CpuInfo, DiskInfo, MemoryInfo, SystemInformation } from './system-information.datastructure';
+import {Automation} from './automation.datastructure';
+import {CpuInfo, DiskInfo, MemoryInfo, SystemInformation} from './system-information.datastructure';
+import {EnvironmentInformation} from './environment-information.datastructure';
+import {EnvironmentInfoBuilder} from './environment-info-builder';
 
 export class AutomationBuilder {
 
@@ -10,7 +12,8 @@ export class AutomationBuilder {
       Boolean(this.payload.alarm),
       Boolean(this.payload.ecu),
       Boolean(this.payload.gate),
-      this.parseSystemInfo()
+      this.parseSystemInfo(),
+      this.parseEnvironmentInfo(),
     );
   }
 
@@ -61,5 +64,20 @@ export class AutomationBuilder {
     }
 
     return Object.assign(new DiskInfo(), diskPayload);
+  }
+
+  private parseEnvironmentInfo(): EnvironmentInformation {
+    const envPayload = this.payload.environmentInfo;
+    if (!envPayload) {
+      return EnvironmentInformation.createDefault();
+    }
+
+    const envInfoBuilder = new EnvironmentInfoBuilder();
+    envInfoBuilder.setStatus(envPayload.status);
+    envInfoBuilder.setTimestamp(envPayload.timestamp);
+    envInfoBuilder.setTemperature(envPayload.temperature);
+    envInfoBuilder.setHumidity(envPayload.humidity);
+
+    return envInfoBuilder.build();
   }
 }
