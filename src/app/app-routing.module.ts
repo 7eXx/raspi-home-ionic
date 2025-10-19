@@ -7,9 +7,9 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'environment-info',
-    loadChildren: () => import('./environment-info/environment-info.module').then( m => m.EnvironmentInfoPageModule)
-  },
+    path: '**',
+    redirectTo: 'tabs/home'
+  }
 ];
 @NgModule({
   imports: [
